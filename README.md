@@ -2,8 +2,9 @@
 Basic CLI expense tracker that uses FastAPI.
 
 ## General format
+```
 python args.py <command> [arguments]
-
+```
 ---
 
 ## Add an expense
