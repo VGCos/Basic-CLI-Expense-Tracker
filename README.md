@@ -46,14 +46,14 @@ python args.py delete 2
 python args.py summary
 
 Example output:
+```
 === Expense Summary ===
 Count   : 2
 Mean    : 32.10
 Median  : 32.10
 Min     : 30.9
 Max     : 33.3
-
----
+```
 
 ## Notes
 - Use quotes for multi-word descriptions:
