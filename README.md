@@ -32,7 +32,9 @@ ID    Cost       Description
 ---
 
 ## Update an expense
+```
 python args.py update <id> <amount> <description>
+```
 
 Example:
 ```
@@ -41,7 +43,9 @@ python args.py update 2 15.0 "dinner with friends"
 ---
 
 ## Delete an expense
+```
 python args.py delete <id>
+```
 
 Example:
 ```
