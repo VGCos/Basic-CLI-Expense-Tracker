@@ -33,6 +33,10 @@ def get_next_id():
 
 
 def adding_expense(next_id, cost, description):
+    if cost < 0:
+        raise HTTPException(400, "Expenses cannot have negative cost")
+
+
     payload = [next_id, cost, description]
     with open('expenses.csv', mode='a', newline='') as f:
         writer = csv.writer(f)
@@ -82,6 +86,9 @@ def post_item(expense: Expense):
 
 @app.put("/expenses/{expense_id}")
 def update_item(expense_id: int, expense: Expense):
+    if expense.cost < 0:
+        raise HTTPException(400, "Expenses cannot have negative cost")
+
     expenses = get_all_expenses()
     found = False
     

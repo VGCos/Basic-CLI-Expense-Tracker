@@ -24,7 +24,7 @@ summary_parser = sub_parser.add_parser("summary")
 
 args = parser.parse_args()
 args_dict = vars(args)
-print(args_dict)
+
 
 url = "http://127.0.0.1:8000/expenses"
 
@@ -55,7 +55,10 @@ def add_expense(cost: float, description: str):
     payload = {"cost": cost, "description": description}
     response = requests.post(url, json=payload)
 
-    response.raise_for_status()
+    if response.status_code == 400:
+        print("400 Bad Request, expense cost cannot be negative")
+        return
+    
     print_expense(response.json())
 
 
@@ -85,6 +88,9 @@ def update_expense(expense_id: int, cost: float, description: str):
 
     if response.status_code == 404:
         print("404 Not Found, expense ID does not exist")
+        return
+    elif response.status_code == 400:
+        print("400 Bad Request, expense cost cannot be negative")
         return
     
     msg = response.json()
